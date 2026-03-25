@@ -40,15 +40,9 @@ tiltElements.forEach(element => {
     });
 });
 
-// Simple horizontal scroll behavior for showcase track with mouse wheel
-const showcaseContainer = document.querySelector('.showcase-container');
-if(showcaseContainer) {
-    showcaseContainer.addEventListener('wheel', (evt) => {
-        // Prevent default vertical scrolling if the user is scrolling over the showcase but don't prevent completely tracking
-        // Just make scrolling sideways works nicely. Often nice to have Shift+Wheel scroll horizontally native,
-        // but let's add simple click and drag to scroll.
-    });
-
+// Simple horizontal scroll behavior for all showcase tracks
+const showcaseContainers = document.querySelectorAll('.showcase-container');
+showcaseContainers.forEach(showcaseContainer => {
     let isDown = false;
     let startX;
     let scrollLeft;
@@ -79,4 +73,26 @@ if(showcaseContainer) {
     });
     
     showcaseContainer.style.cursor = 'grab';
+});
+
+// Theme Switch Logic
+function switchTheme(mode) {
+    const darkShowcase = document.getElementById('dark-showcase');
+    const lightShowcase = document.getElementById('light-showcase');
+    const heroImg = document.getElementById('user-mockup-img');
+    const tabBtns = document.querySelectorAll('.tab-btn');
+
+    if (mode === 'light') {
+        darkShowcase.style.display = 'none';
+        lightShowcase.style.display = 'block';
+        heroImg.src = 'mockup_png/The%20Hub%20Dashboard%20Light.png';
+        tabBtns[0].classList.remove('active');
+        tabBtns[1].classList.add('active');
+    } else {
+        darkShowcase.style.display = 'block';
+        lightShowcase.style.display = 'none';
+        heroImg.src = 'mockup_png/The%20Hub%20Dashboard%20Dark.png';
+        tabBtns[0].classList.add('active');
+        tabBtns[1].classList.remove('active');
+    }
 }

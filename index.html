@@ -89,9 +89,13 @@
             <div class="section-header">
                 <h2>Inside VeritasGuard</h2>
                 <p>An intuitive interface that makes protecting your digital life effortless.</p>
+                <div class="theme-tabs">
+                    <button class="tab-btn active" onclick="switchTheme('dark')"><i class="fa-solid fa-moon"></i> Dark App</button>
+                    <button class="tab-btn" onclick="switchTheme('light')"><i class="fa-regular fa-sun"></i> Light App</button>
+                </div>
             </div>
             
-            <div class="showcase-container">
+            <div class="showcase-container" id="dark-showcase">
                 <div class="showcase-track">
                     <div class="showcase-item"><img src="mockup_png/Welcome%20Screen%20Dark.png" alt="Welcome Screen"></div>
                     <div class="showcase-item"><img src="mockup_png/Onboarding%20&%20Permissions%20Dark.png" alt="Onboarding"></div>
@@ -100,6 +104,18 @@
                     <div class="showcase-item"><img src="mockup_png/Hoax%20Detection%20Result%20Dark.png" alt="Hoax Detection"></div>
                     <div class="showcase-item"><img src="mockup_png/Verified%20Info%20Result%20Dark.png" alt="Verified Info"></div>
                     <div class="showcase-item"><img src="mockup_png/Feedback%20&%20Support%20Dark.png" alt="Support"></div>
+                </div>
+            </div>
+
+            <div class="showcase-container" id="light-showcase" style="display: none;">
+                <div class="showcase-track">
+                    <div class="showcase-item"><img src="mockup_png/Welcome%20Screen%20Light.png" alt="Welcome Screen"></div>
+                    <div class="showcase-item"><img src="mockup_png/Onboarding%20&%20Permissions%20Light.png" alt="Onboarding"></div>
+                    <div class="showcase-item"><img src="mockup_png/Assistive%20Floating%20UI%20Light.png" alt="Floating UI"></div>
+                    <div class="showcase-item"><img src="mockup_png/Phising%20Detection%20Result%20Light.png" alt="Phishing Detection"></div>
+                    <div class="showcase-item"><img src="mockup_png/Hoax%20Detection%20Result%20Light.png" alt="Hoax Detection"></div>
+                    <div class="showcase-item"><img src="mockup_png/Verified%20Info%20light%20mode%20Light.png" alt="Verified Info"></div>
+                    <div class="showcase-item"><img src="mockup_png/Feedback%20&%20Support%20Light.png" alt="Support"></div>
                 </div>
             </div>
         </section>
