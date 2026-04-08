@@ -485,16 +485,19 @@ main {
     width: max-content;
     padding-bottom: 2rem;
     margin: 0 auto;
+    align-items: center;
 }
 
 .showcase-item {
     width: 280px;
+    height: max-content;
     border-radius: 36px;
     padding: 10px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     transition: transform 0.4s ease, border-color 0.4s ease;
+    cursor: pointer;
 }
 
 .showcase-item:hover {
