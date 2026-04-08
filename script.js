@@ -96,13 +96,13 @@ function switchTheme(mode) {
     if (mode === 'light') {
         darkShowcase.style.display = 'none';
         lightShowcase.style.display = 'block';
-        heroImg.src = 'mockup_png/The%20Hub%20-%20Light.png';
+        heroImg.src = 'mockup_png/Slice 5-9.png';
         tabBtns[0].classList.remove('active');
         tabBtns[1].classList.add('active');
     } else {
         darkShowcase.style.display = 'block';
         lightShowcase.style.display = 'none';
-        heroImg.src = 'mockup_png/The%20Hub.png';
+        heroImg.src = 'mockup_png/Slice 5-2.png';
         tabBtns[0].classList.add('active');
         tabBtns[1].classList.remove('active');
     }
