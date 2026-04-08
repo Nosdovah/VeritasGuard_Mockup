@@ -79,6 +79,27 @@ showcaseContainers.forEach(showcaseContainer => {
     showcaseContainer.style.cursor = 'grab';
 });
 
+// Showcase Navigation Buttons Logic
+const prevBtn = document.querySelector('.showcase-nav-btn.prev');
+const nextBtn = document.querySelector('.showcase-nav-btn.next');
+
+if (prevBtn && nextBtn) {
+    [prevBtn, nextBtn].forEach(btn => {
+        btn.addEventListener('click', () => {
+            const isNext = btn.classList.contains('next');
+            // Find the visible showcase container
+            const activeContainer = document.querySelector('.showcase-container:not([style*="display: none"])');
+            if (activeContainer) {
+                const scrollAmount = 320; // Width of item + some gap
+                activeContainer.scrollBy({
+                    left: isNext ? scrollAmount : -scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
 // Theme Switch Logic
 let currentMockupImage = ""; // To track user custom selection
 
@@ -108,20 +129,59 @@ function switchTheme(mode) {
     }
 }
 
-// Click to view mockup in hero section
+// Click to view mockup in hero section and Zoom
 const showcaseItems = document.querySelectorAll('.showcase-item');
+const modal = document.getElementById('zoomModal');
+const modalImg = document.getElementById('modalImg');
+const modalCaption = document.getElementById('modalCaption');
+const closeModal = document.querySelector('.close-modal');
+
 showcaseItems.forEach(item => {
     item.addEventListener('click', () => {
         if (isDragging) return; // Prevent click if user is dragging to scroll
-        const imgSrc = item.querySelector('img').src;
+        const img = item.querySelector('img');
+        const imgSrc = img.src;
+        const imgAlt = img.alt;
         const heroImg = document.getElementById('user-mockup-img');
+        
+        // Update hero image
         heroImg.src = imgSrc;
+        
+        // Open Zoom Modal
+        if (modal && modalImg) {
+            modal.style.display = "block";
+            modalImg.src = imgSrc;
+            modalCaption.innerHTML = imgAlt;
+            document.body.style.overflow = 'hidden'; // Prevent scrolling background
+        }
         
         // Highlight active card
         showcaseItems.forEach(card => card.style.borderColor = 'var(--border-color)');
         item.style.borderColor = 'var(--primary)';
-        
-        // Smooth scroll to view it
-        document.querySelector('.hero').scrollIntoView({ behavior: 'smooth' });
     });
 });
+
+// Close Modal Logic
+if (closeModal) {
+    closeModal.addEventListener('click', () => {
+        modal.style.display = "none";
+        document.body.style.overflow = 'auto';
+    });
+}
+
+if (modal) {
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Close on Escape key
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === "block") {
+            modal.style.display = "none";
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
